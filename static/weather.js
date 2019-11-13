@@ -1,6 +1,6 @@
 var myMap = L.map("map", {
     center: [37.7749, -122.4194],
-    zoom: 13
+    zoom: 5
   });
   
   L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
@@ -17,16 +17,48 @@ var myMap = L.map("map", {
     var heatArray = [];
   
     for (var i = 0; i < response.length; i++) {
-      var location = [response[i].latitude,response[i].longitude];
-  
-      if (location) {
-        heatArray.push(location);
+      var lat = response[i].latitude;
+      var lon = response[i].longitude;
+      var tempAVG = +response[i].avg;
+      var color;
+      console.log(tempAVG);
+
+      if (tempAVG < 20) {
+          color = "white";
       }
-    }
+      else if (tempAVG < 40) {
+        color = "lightblue";
+      }
+      else if (tempAVG < 60) {
+          color = "blue";
+      }
+      else if (tempAVG < 80) {
+          color = "purple";
+      }
+      else if (tempAVG < 100) {
+          color = "red";
+      }
+      else {
+          color = "black";
+      }
+      console.log(color);
   
-    var heat = L.heatLayer(heatArray, {
-      radius: 20,
-      blur: 35
-    }).addTo(myMap);
+      heatArray.push([lat,lon]);
+
+      L.circle([lat,lon], {
+        fillOpacity: 0.75,
+        color: color,
+        fillColor: color,
+        // Adjust radius
+        radius: 100
+      }).addTo(myMap);
+
+    };
+  
+    
+    // var heat = L.heatLayer(heatArray, {
+    //   radius: 20,
+    //   blur: 35
+    // }).addTo(map);
   
   });
