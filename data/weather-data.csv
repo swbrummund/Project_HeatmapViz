@@ -1,4 +1,4 @@
-station_name,state,latitude,longitude,avg,avg_2,avg_3
+station_name,state,latitude,longitude,low,high,avg
 Little Warm WY US,WY,43.5,-109.75,25.98044693,48.32681564,36.67039106
 Mosby Mtn. UT US,UT,40.61,-109.89,26.76190476,50.00280112,37.18487395
 SPINCICH LAKE MICHIGAN MI US,MI,46.4578,-85.6272,27.68994413,50.38547486,39.79329609
