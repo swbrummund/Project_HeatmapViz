@@ -43,7 +43,7 @@ var myMap = L.map("map", {
       }
       console.log(color);
   
-      heatArray.push([lat,lon]);
+    //   heatArray.push([lat,lon,tempAVG]);
 
       L.circle([lat,lon], {
         fillOpacity: 0.75,
@@ -53,12 +53,17 @@ var myMap = L.map("map", {
         radius: 100
       }).addTo(myMap);
 
+    //   var heat = L.heatLayer([
+    //     [50.5, 30.5, 0.2], // lat, lng, intensity
+    //     [50.6, 30.4, 0.5],
+    //   ], {radius: 25}).addTo(map);
+
     };
   
     
     // var heat = L.heatLayer(heatArray, {
     //   radius: 20,
     //   blur: 35
-    // }).addTo(map);
+    // }).addTo(myMap);
   
   });
