@@ -10,22 +10,26 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <link rel="stylesheet" href="../static/css/style.css" />
 
+    <style>
+      body { margin:0; padding:0; }
+      #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+
   </head>
 
   <body>
-
-    <div id="map"></div>
+    <div class="row">
+    <div class="col-md-6" id="map"></div>
+    <!-- <div class="col-md-6" id="incomeMap"></div> -->
+    </div>
 
     <!-- API key -->
     <script type="text/javascript" src="../static/config.js"></script>
 
     <!-- JS -->
-    <script type="text/javascript" src="../static/states_data.js"></script>
+    <script type="text/javascript" src="../static/states_data.geojson"></script>
     <script type="text/javascript" src="../static/weather.js"></script>
-
-    <!-- Leaflet heatmap plugin-->
-    <!-- <script type="text/javascript" src="../static/leaflet-heat.js"></script> -->
-
+    <!-- <script type="text/javascript" src="../static/Median_income.js"></script> -->
 
   </body>
 
