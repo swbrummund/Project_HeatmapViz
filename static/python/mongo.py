@@ -21,3 +21,14 @@ for state in statesData:
 results = db.fruits_db.find()
 for result in results:
     print(result)
+
+
+
+
+# mydb = myclient["example_db"]
+#    mycol = mydb["example_coll"]
+#    with open('static/data/somedata.json') as J:
+#        file_data = json.load(J)
+#    print(file_data)
+#    mycol.insert_one(file_data)
+#    myclient.close()
