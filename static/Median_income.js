@@ -92,7 +92,7 @@ L.mapbox.styleLayer('mapbox://styles/bspruill93/ck30ve1501cx51co5hj9v8yby').addT
         .bindPopup('North Dakota , US <br> Median Income: $57,415')
         .openPopup(); 
 
-    L.marker([30.000000, -80.500000]).addTo(map)
+    L.marker([38.349800, -81.632600]).addTo(map)
     .bindPopup('West Virginia, US <br> Median Income: $42,824')
     .openPopup();
 
