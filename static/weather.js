@@ -74,7 +74,7 @@ var colorPop = ['#ffffff', '#ccd9ff', , '#b3c6ff', '#99b3ff', '#668cff', '#4d79f
             opacity: 1,
             color: 'white',
             dashArray: '3',
-            fillOpacity: 0.5
+            fillOpacity: 0.75
         };
     }
 
@@ -85,7 +85,7 @@ var colorPop = ['#ffffff', '#ccd9ff', , '#b3c6ff', '#99b3ff', '#668cff', '#4d79f
           opacity: 1,
           color: 'white',
           dashArray: '3',
-          fillOpacity: 0.5
+          fillOpacity: 0.75
           
       };
   }
@@ -97,7 +97,7 @@ var colorPop = ['#ffffff', '#ccd9ff', , '#b3c6ff', '#99b3ff', '#668cff', '#4d79f
         opacity: 1,
         color: 'white',
         dashArray: '3',
-        fillOpacity: 0.5
+        fillOpacity: 0.75
         
     };
 }
