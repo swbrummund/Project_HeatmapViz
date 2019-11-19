@@ -1,6 +1,3 @@
-// const api_key = "pk.eyJ1Ijoic3dicnVtbXVuZCIsImEiOiJjazJocHhmcTAxOGZ0M2luMGRieWJ5eHUzIn0.Xdto5EtppW8zslmOeWirIA"
-
-  
 var streetmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
     attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
     maxZoom: 18,
@@ -14,95 +11,76 @@ var streetmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.pn
 
   L.geoJson(statesData);
 
+var colorInc = ['#ffffff', '#e6ffe6', '#ccffcc', '#b3ffb3', '#99ff99', '#80ff80', '#66ff66', '#4dff4d', '#33ff339', '#1aff1a', '#00ff00', '#00e600', '#00cc00', '#00b300']
+
+var colorTemp = ['#ffffff', '#ebf5f2', '#e4eace', '#efda90', '#fac766', '#ffb448', '#ffa333', '#ff9021', '#ff7b11', '#ff6203', '#ff4400', '#ff0000']
 
 
-var color = ['#ffffff', '#ebf5f2', '#e4eace', '#efda90', '#fac766', '#ffb448', '#ffa333', '#ff9021', '#ff7b11', '#ff6203', '#ff4400', '#ff0000']
+    function getColorTemp(d) {
+        
+        return d > 80 ? colorTemp[11] :
+               d > 75  ? colorTemp[10] :
+               d > 70  ? colorTemp[9] :
+               d > 65  ? colorTemp[8] :
+               d > 60  ? colorTemp[7] :
+               d > 55  ? colorTemp[6] :
+               d > 50  ? colorTemp[5] :
+               d > 45  ? colorTemp[4] :
+               d > 40  ? colorTemp[3] :
+               d > 35  ? colorTemp[2] :
+               d > 30   ? colorTemp[1] :
+                        colorTemp[0];
+    };
 
-  // d3.csv("../data/state-weather-data.csv", function(response) {
-  
-    // console.log(response);
-  
-    // var heatArray = [];
-
-  
-    // for (var i = 0; i < response.length; i++) {
-    //   var lat = response[i].latitude;
-    //   var lon = response[i].longitude;
-    //   var tempAVG = +response[i].avg;
-    //   var color;
-      // console.log(tempAVG);
-
-    //   if (tempAVG < 20) {
-    //       color = "white";
-    //   }
-    //   else if (tempAVG < 40) {
-    //     color = "lightblue";
-    //   }
-    //   else if (tempAVG < 60) {
-    //       color = "blue";
-    //   }
-    //   else if (tempAVG < 80) {
-    //       color = "purple";
-    //   }
-    //   else if (tempAVG < 100) {
-    //       color = "red";
-    //   }
-    //   else {
-    //       color = "black";
-    //   }
-    //   console.log(color);
-  
-    //   heatArray.push([lat,lon,tempAVG]);
-
-    function getColor(d) {
-        // console.log( d > 80 ? color[11] :
-        //     d > 75  ? color[10] :
-        //     d > 70  ? color[9] :
-        //     d > 65  ? color[8] :
-        //     d > 60  ? color[7] :
-        //     d > 55  ? color[6] :
-        //     d > 50  ? color[5] :
-        //     d > 45  ? color[4] :
-        //     d > 40  ? color[3] :
-        //     d > 35  ? color[2] :
-        //     d > 30   ? color[1] :
-        //              color[0]);
-        return d > 80 ? color[11] :
-               d > 75  ? color[10] :
-               d > 70  ? color[9] :
-               d > 65  ? color[8] :
-               d > 60  ? color[7] :
-               d > 55  ? color[6] :
-               d > 50  ? color[5] :
-               d > 45  ? color[4] :
-               d > 40  ? color[3] :
-               d > 35  ? color[2] :
-               d > 30   ? color[1] :
-                        color[0];
-    }
-
+    function getColorInc(d) {
+      console.log(
+               d > 80000 ? colorInc[11] :
+               d > 75000  ? colorInc[10] :
+               d > 70000  ? colorInc[9] :
+               d > 65000  ? colorInc[8] :
+               d > 60000  ? colorInc[7] :
+               d > 55000  ? colorInc[6] :
+               d > 50000  ? colorInc[5] :
+               d > 45000  ? colorInc[4] :
+               d > 40000  ? colorInc[3] :
+               d > 35000  ? colorInc[2] :
+               d > 30000   ? colorInc[1] :
+                        colorInc[0]);
+      return d > 80000 ? colorInc[11] :
+             d > 75000  ? colorInc[10] :
+             d > 70000  ? colorInc[9] :
+             d > 65000  ? colorInc[8] :
+             d > 60000  ? colorInc[7] :
+             d > 55000  ? colorInc[6] :
+             d > 50000  ? colorInc[5] :
+             d > 45000  ? colorInc[4] :
+             d > 40000  ? colorInc[3] :
+             d > 35000  ? colorInc[2] :
+             d > 30000   ? colorInc[1] :
+                      colorInc[0];
+  }
     
 
     function styleTemp(feature) {
         return {
-            fillColor: getColor(feature.properties.avgtemp),
+            fillColor: getColorTemp(feature.properties.avgtemp),
             weight: 2,
             opacity: 1,
             color: 'white',
             dashArray: '3',
-            fillOpacity: 0.7
+            fillOpacity: 0.5
         };
     }
 
     function styleInc(feature) {
-      console.log(feature.properties.medain_income)
+      console.log(feature.properties.median_income)
       return {
-          fillColor: getColor(feature.properties.medain_income),
+          fillColor: getColorInc(feature.properties.median_income),
           weight: 2,
           opacity: 1,
           color: 'white',
           dashArray: '3',
-          fillOpacity: 0.7
+          fillOpacity: 0.5
           
       };
   }
@@ -125,25 +103,3 @@ var color = ['#ffffff', '#ebf5f2', '#e4eace', '#efda90', '#fac766', '#ffb448', '
     L.control.layers(baseMaps,overlayMaps, {
       collapsed: false
     }).addTo(myMap);
-
-    //   L.circle([lat,lon], {
-    //     fillOpacity: 0.75,
-    //     color: color,
-    //     fillColor: color,
-    //     radius: 1000
-    //   }).addTo(myMap);
-
-    //   var heat = L.heatLayer([
-    //     [50.5, 30.5, 0.2], // lat, lng, intensity
-    //     [50.6, 30.4, 0.5],
-    //   ], {radius: 25}).addTo(map);
-
-    // };
-  
-    
-    // var heat = L.heatLayer(heatArray, {
-    //   radius: 20,
-    //   blur: 35
-    // }).addTo(myMap);
-  
-  // });
