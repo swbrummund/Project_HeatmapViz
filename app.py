@@ -32,7 +32,7 @@ for state in statesData['features']:
 
 @app.route("/")
 def index():
-    """Return the homepage."""
+    # Return the homepage
     return render_template("index.html")
 
 @app.route("/data")
