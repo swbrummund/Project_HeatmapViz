@@ -18,10 +18,13 @@
 
     <!-- API key -->
     <script type="text/javascript" src="../static/js/config.js"></script>
+    <script src="{{ url_for('static', filename='../static/js/app.js') }}"></script>
 
     <!-- JS -->
-    <script type="text/javascript" src="../static/js/states_data.js"></script>
-    <script type="text/javascript" src="../static/js/weather.js"></script>
+    <!-- <script type="text/javascript" src="../static/js/states_data.js"></script> -->
+    <script src="{{ url_for('static', filename='../static/js/states_data.js') }}"></script>
+    <!-- <script type="text/javascript" src="../static/js/weather.js"></script> -->
+    <script src="{{ url_for('static', filename='../static/js/weather.js') }}"></script>
 
   </body>
 
