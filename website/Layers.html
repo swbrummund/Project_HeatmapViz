@@ -30,19 +30,13 @@ body { margin:0; padding:0; }
 			
         <!-- nav -->
         <nav class="cf">
-        
-          <!-- left nav -->
-          <ul id="left-nav" class="sf-menu">
-  
-            <li><a href="blog.html">Heat Map</a></li>
-            <li class="current-menu-item"><a href="index.html">HOME</a></li>
-          </ul>
-          <!-- ends left nav -->
           
-          <!-- right nav -->
-          <ul id="right-nav" class="sf-menu">
-            <li><a href="test2.html">Median Income Map</a></li>
-            <li><a href="index2.html">Population Map</a></li>
+				<!-- right nav -->
+				<ul id="left-nav" class="sf-menu">
+            <li class="current-menu-item"><a href="index.html">HOME</a></li>
+            <li><a href="Page1.html">Overlay</a></li>
+            <li><a href="Pag2.html">Median Income Map</a></li>
+            <li><a href="Page3.html">Population Map</a></li>
           </ul>
           <!-- ENDS right nav -->
           
@@ -60,7 +54,10 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 </style>
 <div id='map'></div>
-<script>
+
+<script src="js/Median_income.js"></script>
+
+<!-- <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hlbGx5cm9iMTMiLCJhIjoiY2syejZkdHd1MDNpajNtbDNpNzN1dzRwaSJ9.In3fEe6D9rbx70s9Gx6w9Q';
  
 var map = new mapboxgl.Map({
@@ -177,7 +174,23 @@ map.addLayer({
           44.000000
         ],
         "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Hey",
+        "description": "hey, US",
+        "icon": "music"
+      },
+      "geometry": {
+        "coordinates": [
+        -120.500000,
+        44.010299
+        ],
+        "type": "Point"
     }
+
 }]
 }
 },
@@ -219,7 +232,7 @@ map.getCanvas().style.cursor = '';
 popup.remove();
 });
 });
-</script>
+</script> -->
  
 </body>
 </html>
