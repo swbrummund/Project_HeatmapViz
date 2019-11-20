@@ -137,7 +137,18 @@ var colorPop = ['#ffffff', '#ccd9ff', , '#b3c6ff', '#99b3ff', '#668cff', '#4d79f
           layer.bringToFront();
       }
   }
+  
 
   function resetHighlight(e) {
     geojson.resetStyle(e.target);
 }
+
+// var geojson;
+// // ... our listeners
+// geojson = L.geoJson(...);
+
+function popup(e) {
+  map.bindPopup("<h3>State: " + e.properties.name + "<h3><h2>Population: " + e.properties.population + "<h2><h2> Median Income: " + e.properties.median_income + "<h2><h2>Average Yearly Temp: " + e.properties.avgtemp);
+}
+
+
