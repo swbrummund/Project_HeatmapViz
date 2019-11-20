@@ -9,7 +9,13 @@ var streetmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.pn
     "Street Map": streetmap
   };
 
+
+d3.json("/data", function(data) {
+  var statesData = data;
   L.geoJson(statesData);
+  });
+
+// L.geoJson(statesData);
 
 var colorInc = ['#ffffff', '#00g800', '#00f800', '#00e800', '#00d800', '#00C800', '#00B800', '#00A800', '#009800', '#008800', '#007800', '#006800']
 
@@ -102,9 +108,13 @@ var colorPop = ['#ffffff', '#ccd9ff', , '#b3c6ff', '#99b3ff', '#668cff', '#4d79f
     };
 }
     
-    var temp = L.geoJson(statesData, {style: styleTemp});
-    var inc = L.geoJson(statesData, {style: styleInc});
-    var pop = L.geoJson(statesData, {style: stylePop});
+function popups(feature, layer) {
+  layer.bindPopup("<h3>" + feature.properties.name + "<h3><h4>Population: " + feature.properties.population + "<h4><h4> Median Income: " + feature.properties.median_income + "<h4><h4>Average Yearly Temp: <h4>" + feature.properties.avgtemp);
+};
+
+    var temp = L.geoJson(statesData, {style: styleTemp, onEachFeature: popups });
+    var inc = L.geoJson(statesData, {style: styleInc, onEachFeature: popups});
+    var pop = L.geoJson(statesData, {style: stylePop, onEachFeature: popups});    
 
 
     var overlayMaps = {
@@ -122,33 +132,3 @@ var colorPop = ['#ffffff', '#ccd9ff', , '#b3c6ff', '#99b3ff', '#668cff', '#4d79f
     L.control.layers(baseMaps,overlayMaps, {
       collapsed: false
     }).addTo(myMap);
-
-    function highlightFeature(e) {
-      var layer = e.target;
-  
-      layer.setStyle({
-          weight: 5,
-          color: '#666',
-          dashArray: '',
-          fillOpacity: 0.7
-      });
-  
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-          layer.bringToFront();
-      }
-  }
-  
-
-  function resetHighlight(e) {
-    geojson.resetStyle(e.target);
-}
-
-// var geojson;
-// // ... our listeners
-// geojson = L.geoJson(...);
-
-function popup(e) {
-  map.bindPopup("<h3>State: " + e.properties.name + "<h3><h2>Population: " + e.properties.population + "<h2><h2> Median Income: " + e.properties.median_income + "<h2><h2>Average Yearly Temp: " + e.properties.avgtemp);
-}
-
-
