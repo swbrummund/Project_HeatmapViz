@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<head>
+        <meta charset="utf-8">
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/nivo-slider.css">
+        <link rel="stylesheet" media="all" href="css/responsive.css"/>
+        
+        <script src="js/modernizr-2.6.1.min.js"></script>
+        
+        <!-- GOOGLE FONTS -->
+        <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,200' rel='stylesheet' type='text/css'>
+  
+<title>Maps</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
+<style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+  	<!-- HEADER -->
+		<header class="cf">
+			
+        <!-- nav -->
+        <nav class="cf">
+        
+          <!-- left nav -->
+          <ul id="left-nav" class="sf-menu">
+  
+            <li><a href="blog.html">Heat Map</a></li>
+            <li class="current-menu-item"><a href="index.html">HOME</a></li>
+          </ul>
+          <!-- ends left nav -->
+          
+          <!-- right nav -->
+          <ul id="right-nav" class="sf-menu">
+            <li><a href="test2.html">Median Income Map</a></li>
+            <li><a href="index2.html">Population Map</a></li>
+          </ul>
+          <!-- ENDS right nav -->
+          
+        </nav>
+        <!-- nav -->
+        
+        
+      </header>
+      <!-- ENDS HEADER -->
+      
+<style>
+.mapboxgl-popup {
+max-width: 400px;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+</style>
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2hlbGx5cm9iMTMiLCJhIjoiY2syejZkdHd1MDNpajNtbDNpNzN1dzRwaSJ9.In3fEe6D9rbx70s9Gx6w9Q';
+ 
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/chellyrob13/ck2z6eu500thr1cpmf6qya410',
+center: [-97.457, 38.249],
+zoom: 4.00
+});
+ 
+map.on('load', function () {
+// Add a layer showing the places.
+map.addLayer({
+"id": "places",
+"type": "symbol",
+"source": {
+"type": "geojson",
+"data": 
+{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Wisconsin",
+        "description": "Wisconsin, US"
+      },
+      "geometry": {
+        "coordinates": [
+          -89.500000,
+          44.500000
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "West Virginia",
+        "description": "West Virginia, US"
+      },
+      "geometry": {
+        "coordinates": [
+          -80.500000,
+          39.000000
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Vermont",
+        "description": "Vermont, US"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.699997,
+          44.000000
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Texas",
+        "description": "Texas, US"
+      },
+      "geometry": {
+        "coordinates": [
+          -100.000000,
+          31.000000
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "South Dakota",
+        "description": "South Dakota, US"
+      },
+      "geometry": {
+        "coordinates": [
+          -100.000000,
+          44.000000
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Rhode Island",
+        "description": "Rhode Island, US"
+      },
+      "geometry": {
+        "coordinates": [
+          -71.500000,
+          41.700001
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Oregon",
+        "description": "Oregon, US",
+        "icon": "music"
+      },
+      "geometry": {
+        "coordinates": [
+          -120.500000,
+          44.000000
+        ],
+        "type": "Point"
+    }
+}]
+}
+},
+"layout": {
+"icon-image": "{icon}-15",
+"icon-allow-overlap": true
+}
+});
+ 
+// Create a popup, but don't add it to the map yet.
+var popup = new mapboxgl.Popup({
+closeButton: false,
+closeOnClick: false
+});
+ 
+map.on('mouseenter', 'places', function(e) {
+// Change the cursor style as a UI indicator.
+map.getCanvas().style.cursor = 'pointer';
+ 
+var coordinates = e.features[0].geometry.coordinates.slice();
+var description = e.features[0].properties.description;
+ 
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+ 
+// Populate the popup and set its coordinates
+// based on the feature found.
+popup.setLngLat(coordinates)
+.setHTML(description)
+.addTo(map);
+});
+ 
+map.on('mouseleave', 'places', function() {
+map.getCanvas().style.cursor = '';
+popup.remove();
+});
+});
+</script>
+ 
+</body>
+</html>
