@@ -2,23 +2,27 @@ import pymongo
 import json
 
 # read file
-with open('../states_data.json') as f:
+with open('../../data/states_data.json') as f:
   statesData = json.load(f)
-print(statesData)
+# print(statesData)
 
 conn = 'mongodb://localhost:27017'
 client = pymongo.MongoClient(conn)
 
 # Declare the database
-db = client.lunch_land
+db = client.project2
+
+db.states.drop()
 
 # Declare the collection
-collection = db.lunch_land
+collection = db.states
 
-for state in statesData:
+
+for state in statesData['features']:
+    # print(state)
     collection.insert_one(state)
 
-results = db.fruits_db.find()
+results = db.states.find()
 for result in results:
     print(result)
 
