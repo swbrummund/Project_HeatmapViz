@@ -1,39 +1,61 @@
+<!-- Code from d3-graph-gallery.com -->
 <!DOCTYPE html>
-<html>
 <head>
-<meta charset=utf-8 />
-<title>Add styles made with Mapbox Studio using styleLayer</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.css' rel='stylesheet' />
-<style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
-</head>
-<body>
-    	<!-- HEADER -->
-      <header class="cf">
+		<meta charset="utf-8">
+		<title>Maps Project</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/nivo-slider.css">
+        <link rel="stylesheet" media="all" href="css/responsive.css"/>
+		
+        <script type='text/javascript'  src="js/modernizr-2.6.1.min.js"></script>
+        <script type='text/javascript' src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+          <script src="./js/graph.js"></script>
+		
+		<!-- GOOGLE FONTS -->
+        <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,200' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<!-- HEADER -->
+		<header class="cf">
 			
         <!-- nav -->
         <nav class="cf">
         
-            <!-- right nav -->
-            <ul id="right-nav" class="sf-menu">
-                <li class="current-menu-item"><a href="index.html">Home</a></li>
-                <li><a href="Page1.html">Overlay</a></li>
-                <li><a href="Pag2.html">Graphs</a></li>
-                <li><a href="Page3.html">Table</a></li>
-              </ul>
-              <!-- ENDS  nav -->
-    
-            </nav>
-          
-          
-        </header>
-        <!-- ENDS HEADER -->
-<div id='map'></div>
+				<!-- right nav -->
+				<ul id="right-nav" class="sf-menu">
+            <li class="current-menu-item"><a href="index.html">Home</a></li>
+            <li><a href="overlay.html">Overlay</a></li>
+            <li><a href="graphs.html">Graphs</a></li>
+            <li><a href="table.html">Table</a></li>
+          </ul>
+          <!-- ENDS  nav -->
 
-<script type="text/javascript" src="js/Median_income.js"> </script>
-</body>
-</html>
+        </nav>
+        <!-- nav -->
+			
+			
+		</header>
+		<!-- ENDS HEADER -->
+
+   
+<select class="dropdown" id="dd">
+    <option value="" selected="selected">Select Graph Type</option>
+    <option value="Median Income">Income</option>
+    <option value="Population">Population</option>
+    <option value="AvgWeather">Weather</option>
+</select>
+
+<div id="graph" style="height: 700px; width: 50%; align='center';margin-left: 25%;"></div>
+
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    </body>
+    </html>
+    
