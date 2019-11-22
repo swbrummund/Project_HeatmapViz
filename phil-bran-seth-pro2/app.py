@@ -11,7 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-with open('./data/states_data.json') as f:
+with open('../data/states_data.json') as f:
   statesData = json.load(f)
 
 conn = 'mongodb://localhost:27017'
